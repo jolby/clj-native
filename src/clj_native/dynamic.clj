@@ -27,8 +27,8 @@
   "Binds a jna Function object to a clojure function."
   [#^Function jna-fn #^Class return-type]
   (if (= Void/TYPE return-type)
-    (fn [& args] (.invoke jna-fn (into-array args)))
-    (fn [& args] (.invoke jna-fn return-type (into-array args)))))
+    (fn [& args] (.invoke jna-fn (into-array Object args)))
+    (fn [& args] (.invoke jna-fn return-type (into-array Object args)))))
 
 (defn #^Pointer get-global
   "Gets a pointer to a global variable in the specified library.
